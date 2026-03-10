@@ -79,22 +79,22 @@ class Usuario extends Model {
 
     public function auth(){
         
-        $query = "select id, nome, email from usuarios where email = :email and senha = :senha";
+        $query = "select id, nome, email, senha from usuarios where email = :email limit 1";
         $stmt = $this->db->prepare($query);
         $stmt->bindValue(':email', $this->__get('email'));
-        $stmt->bindValue(':senha', $this->__get('senha'));
         $stmt->execute();
-
         $user = $stmt->fetch(\PDO::FETCH_ASSOC);
 
-        if($user['id'] != '' && $user['nome'] != ''){
-            
+
+        if($user && password_verify($this->__get('senha'), $user['senha'])) {
+       
             $this->__set('id', $user['id']);
             $this->__set('nome', $user['nome']);
             
             return true;
+
         } 
-        
+
         return false;
         
     }
