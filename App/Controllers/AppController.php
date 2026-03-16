@@ -52,4 +52,27 @@ class AppController extends Action {
 
     }
 
+    public function quemSeguir(){
+        
+        if(!$this->validarSession()){
+            return false;
+        }
+        
+        $pesquisarPor = isset($_GET['pesquisarPor']) ? $_GET['pesquisarPor'] : '';
+
+        $usuario = array();
+
+        if($pesquisarPor != ''){
+
+            $user = Container::getModel('usuario');
+            $user->__set('nome', $pesquisarPor);
+            $usuario = $user->getAll();
+
+        }
+
+        $this->view->usuarios = $usuario;
+
+       $this->render('quemSeguir');
+
+    }
 }
