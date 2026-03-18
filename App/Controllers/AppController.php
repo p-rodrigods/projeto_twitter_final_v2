@@ -62,17 +62,45 @@ class AppController extends Action {
 
         $usuario = array();
 
+
+
         if($pesquisarPor != ''){
 
             $user = Container::getModel('usuario');
             $user->__set('nome', $pesquisarPor);
+            $user->__set('id', $_SESSION['id']);
             $usuario = $user->getAll();
 
         }
 
         $this->view->usuarios = $usuario;
 
-       $this->render('quemSeguir');
+        $this->render('quemSeguir');
 
+    }
+
+    public function acao(){
+        
+        if(!$this->validarSession()){
+            return false;
+        }
+
+        $acao = isset($_GET['acao']) ? $_GET['acao'] : ''; 
+        $id_usuario_seguindo = isset($_GET['id']) ? $_GET['id'] : '';
+
+        $usuario = Container::getModel('usuario');
+        $usuario->__set('id', $_SESSION['id']);
+
+        if($acao == 'seguir'){
+            $usuario->seguirUsuario($id_usuario_seguindo);
+            
+        }
+
+        if($acao == 'deixar_de_seguir'){
+            $usuario->deixarDeSeguir($id_usuario_seguindo);
+        }
+
+
+        
     }
 }
