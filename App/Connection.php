@@ -8,7 +8,7 @@ class Connection {
 		try {
 
 			$conn = new \PDO(
-				"mysql:host=localhost;dbname=twitter_clone;charset=utf8",
+				"mysql:host=127.0.0.1;dbname=twitter_clone;charset=utf8",
 				"prodrigods",
 				"prds1405" 
 			);
@@ -17,6 +17,7 @@ class Connection {
 
 		} catch (\PDOException $e) {
 			//.. tratar de alguma forma ..//
+			echo "Erro: " . $e->getMessage();
 		}
 	}
 }

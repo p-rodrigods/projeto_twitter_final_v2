@@ -100,7 +100,7 @@ class AppController extends Action {
             $usuario->deixarDeSeguir($id_usuario_seguindo);
         }
 
-
+        header('Location: /quem_seguir');
         
     }
 }

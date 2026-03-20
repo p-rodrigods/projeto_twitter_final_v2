@@ -83,12 +83,13 @@
 						<div class="card-body">
 							<div class="row">
 								<div class="col-md-6">
-									<?= $usuario['nome']?>
+									<?= $usuario['nome'] ?>
 								</div>
 								<div class="col-md-6 d-flex justify-content-end">
 									<div>
-										<a href="/acao?acao=seguir&id=<?= $usuario['id']?>" class="btn btn-success">Seguir</a>
-										<a href="/acao?acao=deixar_de_seguir&id=<?= $usuario['id']?>" class="btn btn-danger">Deixar de seguir</a>
+										<a href="/acao?acao=seguir&id=<?= $usuario['id']?>" class="btn btn-success <?= $usuario ['seguindo_sn'] == 1 ? 'd-none' :  '' ?>">Seguir</a>
+
+										<a href="/acao?acao=deixar_de_seguir&id=<?= $usuario['id']?>" class="btn btn-danger <?= $usuario ['seguindo_sn'] == 0 ? 'd-none' :  '' ?>">Deixar de seguir</a>
 									</div>
 								</div>
 							</div>
