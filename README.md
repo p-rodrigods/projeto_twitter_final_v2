@@ -1,39 +1,37 @@
-# Arte&Cia Limpeza do Lar
+# Twitter Clone
 
-Sistema web institucional com blog integrado e painel administrativo para gerenciamento de conteúdo.
+Aplicação web inspirada no funcionamento básico do Twitter, desenvolvida com foco em prática de autenticação de usuários, arquitetura MVC e integração com banco de dados MySQL.
 
 ## Sobre o projeto
 
-O Arte&Cia Limpeza do Lar é uma aplicação web desenvolvida com foco em apresentar serviços de limpeza residencial e permitir a publicação de conteúdos através de um painel administrativo exclusivo.
+O Twitter Clone é uma aplicação web que permite autenticação de usuários e interação com conteúdo através de uma estrutura organizada baseada em arquitetura MVC.
 
-O sistema possui área pública (site e blog) e área administrativa protegida para gerenciamento de posts.
+O projeto foi desenvolvido com objetivo de praticar conceitos fundamentais de desenvolvimento backend utilizando PHP e banco de dados relacional.
 
 ## Funcionalidades
 
-- Página institucional do serviço
-- Blog com listagem de artigos
-- Painel administrativo
-- Cadastro de novos posts
-- Edição de posts
-- Exclusão de posts
+- Login de usuários
+- Sessão autenticada
 - Integração com banco de dados MySQL
+- Sistema de rotas
+- Estrutura organizada em arquitetura MVC
 
 ## Tecnologias utilizadas
 
 - HTML
 - CSS
-- JavaScript
+- Bootstrap
 - PHP
 - MySQL
 
 ## Arquitetura
 
-O projeto utiliza organização baseada em arquitetura MVC e separação de responsabilidades entre camadas da aplicação.
+A aplicação foi desenvolvida utilizando arquitetura MVC (Model-View-Controller), com separação entre regras de negócio, interface e controle de fluxo da aplicação.
 
 ## Objetivo do projeto
 
-Projeto desenvolvido como parte do portfólio profissional com foco em prática de desenvolvimento backend utilizando PHP e banco de dados MySQL.
+Projeto desenvolvido como parte do portfólio profissional com foco na prática de desenvolvimento backend utilizando PHP, autenticação de usuários e organização de aplicações web em padrão MVC.
 
-## Autor
+## Como executar o projeto localmente
 
-Paulo Rodrigo
+1. Clonar o repositório
