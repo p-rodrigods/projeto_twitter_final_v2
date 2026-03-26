@@ -29,6 +29,45 @@ class Tweet extends Model {
 
     }
 
+        public function getPorPagina($limite, $offset){
+
+        $query = "SELECT u.nome, t.id, t.id_usuario, t.tweet, DATE_FORMAT(t.data, '%d/%m/%Y %H:%i') as data
+                  FROM tweets AS t
+                  INNER JOIN usuarios AS u ON t.id_usuario = u.id
+                  WHERE t.id_usuario = :id_usuario 
+                    or t.id_usuario in (SELECT id_usuario_seguindo FROM usuarios_seguidores WHERE id_usuario = :id_usuario)
+                  order by t.data DESC
+                  limit
+                    $limite
+                  offset
+                    $offset
+                  ";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bindValue('id_usuario', $this->__get('id_usuario'));
+        $stmt->execute();
+
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+    //Recuperar Total de Tweets
+    public function getTotalRegistros(){
+
+        $query = "SELECT count(*) as total
+                  FROM tweets AS t
+                  INNER JOIN usuarios AS u ON t.id_usuario = u.id
+                  WHERE t.id_usuario = :id_usuario 
+                    or t.id_usuario in (SELECT id_usuario_seguindo FROM usuarios_seguidores WHERE id_usuario = :id_usuario)";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bindValue('id_usuario', $this->__get('id_usuario'));
+        $stmt->execute();
+        
+        $result = $stmt->fetch(\PDO::FETCH_ASSOC)['total'];
+
+        return $result;
+    }
+
     public function selecionarTodosRegistros(){
 
         $query = "SELECT u.nome, t.id, t.id_usuario, t.tweet, DATE_FORMAT(t.data, '%d/%m/%Y %H:%i') as data

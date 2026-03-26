@@ -83,6 +83,24 @@
 			</div>
 
 			<?php  } ?>
+			<div class="row d-flex justify-content-center mt-3">
+				<div class="">
+					<nav aria-label="...">
+						<ul class="pagination">
+							<li class="page-item"><a href="?pagina=1" class="page-link">Primeira</a></li>
+							<?php  for($i = 1; $i <= $this->view->total_de_paginas; $i++) {  ?>
+
+							<li class="page-item <?= $this->view->pagina_ativa == $i ? 'active' : '' ?>">
+								<a class="page-link" href="?pagina=<?= $i ?>" aria-current="page"><?= $i ?></a>
+							</li>
+	
+							<?php } ?>
+
+							<li class="page-item"><a class="page-link" href="?pagina=<?= $this->view->total_de_paginas ?>">Última</a></li>
+						</ul>
+					</nav>
+				</div>
+			</div>
 
 		</div>
 
